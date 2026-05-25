@@ -10,12 +10,14 @@
 // Edit the wedding date and time here (format: YYYY-MM-DDTHH:MM:SS+TimeZone)
 const WEDDING_DATE = new Date('2026-11-25T19:00:00+05:30');
 
-// The WhatsApp phone number that will receive RSVP & Sangeet registrations.
+// The WhatsApp phone number that will receive RSVP.
 // IMPORTANT: Use country code first, no leading "+" or spaces (e.g. '919876543210')
 const WHATSAPP_PHONE = '918094803454';
 
-// Passcode required by the coordinator to unlock and download uploaded songs
-const PLAYLIST_ACCESS_CODE = 'sangeet2026';
+// The WhatsApp phone number that will receive Sangeet performance & music registrations.
+// IMPORTANT: Use country code first, no leading "+" or spaces (e.g. '919876543210')
+const SANGEET_REGISTRATION_PHONE = '917240743706';
+
 
 /* ── DOM HELPERS ───────────────────────────────────────────────────────── */
 const $ = (selector) => document.querySelector(selector);
@@ -41,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initGallery();
   initRSVPForm();
   initHeroCanvas();
-  initPlaylistAccess();
   initSangeetParticipation();
   initSangeetForm();
   initMobileMenu();
@@ -357,12 +358,14 @@ function handleRSVPSubmit(e) {
   }
 
   const message = [
-    `Dear Hitanshi & Shashank,`,
+    `Dear Meeta Mathur,`,
     ``,
-    `💕 RSVP Confirmation 💕`,
+    `💕 This is Confirmation for 💕`,
+    `Wedding of your Daughter Hitanshi with Shashank,`,
     ``,
     `✨ Guest Name: ${fullname}`,
     `👥 Number of Guests: ${guestcount}`,
+    `📆 Date of attending: ${form.querySelector('input[name="arrival-date"]')?.value || 'Not specified'}`,
     `✅ Joyfully Accept — I will be there! 🎉`,
     ``,
     `Looking forward to celebrating your special day! 🌸`,
@@ -446,7 +449,7 @@ function submitSangeetEntry() {
     `I'm excited to perform at Hitanshi & Shashank's Sangeet! 🌟`,
   ].join('\n');
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${SANGEET_REGISTRATION_PHONE}?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
   showNotification('🎉 Registration sent! The team will confirm your slot soon.', 4000);
@@ -462,37 +465,6 @@ function submitSangeetEntry() {
   }, 1500);
 }
 
-/* ── PLAYLIST UPLOADER (PASSWORD & DROPZONE) ────────────────────────────── */
-let playlistTracks = [];
-
-function initPlaylistAccess() {
-  const pwd = $('#playlist-password');
-  if (pwd) {
-    pwd.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') unlockPlaylist();
-    });
-  }
-
-  const adminBtn = $('#playlist-admin-btn');
-  if (adminBtn) {
-    adminBtn.addEventListener('click', showPlaylistAdminInput);
-  }
-
-  const unlockBtn = $('#playlist-unlock-btn');
-  if (unlockBtn) {
-    unlockBtn.addEventListener('click', unlockPlaylist);
-  }
-
-  const downloadBtn = $('#playlist-download-btn');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', downloadPlaylist);
-  }
-
-  const clearBtn = $('#playlist-clear-btn');
-  if (clearBtn) {
-    clearBtn.addEventListener('click', clearPlaylist);
-  }
-}
 
 function initSangeetParticipation() {
   const perfSubmitBtn = $('#perf-submit-btn');
@@ -544,7 +516,7 @@ function sendSongDetailsToWhatsApp() {
     `25th November 2026 - Jaipur`,
   ].filter(line => line !== '').join('\n');
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${SANGEET_REGISTRATION_PHONE}?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
   showNotification('✓ Opening WhatsApp to share your song details!', 3000);
@@ -555,9 +527,6 @@ function sendSongDetailsToWhatsApp() {
   }
 }
 
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
 
 /* ── POST-WEDDING CONTENT NOTIFICATION SIGNUP ──────────────────────────── */
 function subscribeContentNotify() {

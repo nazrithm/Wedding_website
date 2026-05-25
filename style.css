@@ -12,17 +12,17 @@
   --shiva-dark:    #0A1428; /* Deepest blue-black for rich headers/footers */
   --parvati-white: #F5F3F0; /* Soft warm ivory white for high-contrast text */
   --parvati-silver:#E8E5E0; /* Ethereal silver-grey for backgrounds */
-  --moon-silver:   #D4D1CC; /* Moon-white accents */
+  --moon-silver:   #ccd4cc; /* Moon-white accents */
   --gold:          #C9A961; /* Classic golden accents for ornaments */
-  --gold-light:    #E0C589; /* Light gold for highlights */
+  --gold-light:    #fa5700; /* Light gold for highlights */
   --gold-pale:     #F0E5C3; /* Pale gold for input borders and subtexts */
   --gold-muted:    rgba(201,169,97,0.15); /* Translucent gold for card dividers */
   --indigo-glow:   #4A5E8E; /* Subtle glowing blue for buttons & links */
   --midnight:      #0A1428; /* Midnight sky backdrop */
   --dark:          #0F1E47;
   --text:          #2D3E5F;
-  --text-mid:      #5B7195;
-  --text-light:    #8BA3C4;
+  --text-mid:      #1f3b24;
+  --text-light:    #000000;
   --white:         #FFFEF9;
   --ivory:         #FAF7F2;
   --crimson:       rgba(201,169,97,0.6);
@@ -472,54 +472,7 @@ section { position: relative; }
   margin-top: 8px;
   align-self: center;
 }
-.playlist-download-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-.playlist-clear-btn {
-  padding: 16px 24px;
-  background: transparent; color: rgba(201,169,97,0.5);
-  border: 1px solid rgba(201,169,97,0.2); border-radius: 4px;
-  font-family: var(--font-caps); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.3s;
-}
-.playlist-clear-btn:hover { border-color: rgba(220,80,80,0.4); color: rgba(220,80,80,0.6); }
-.playlist-empty-state {
-  text-align: center; padding: 32px;
-  font-family: var(--font-script); font-size: var(--font-size-base); font-style: italic;
-  color: rgba(201,169,97,0.35);
-}
 
-/* ── PLAYLIST ACCESS LOCK ──────────────────────────────────────────────── */
-.playlist-lock {
-  display: flex; align-items: center; justify-content: center;
-  min-height: 400px; padding: 32px;
-}
-.playlist-lock-card {
-  background: linear-gradient(135deg, rgba(201,169,97,0.08) 0%, rgba(74,94,142,0.05) 100%);
-  border: 2px solid rgba(201,169,97,0.3); border-radius: 16px;
-  padding: 48px 40px; text-align: center; max-width: 400px; width: 100%;
-  box-shadow: 0 20px 60px rgba(15,30,71,0.2);
-}
-.playlist-lock-icon { font-size: 64px; margin-bottom: 24px; display: block; }
-.playlist-lock-card h3 {
-  font-family: var(--font-display); font-size: 28px; font-style: italic;
-  color: var(--gold-light); margin-bottom: 12px;
-}
-.playlist-lock-card p {
-  font-family: 'Lato', sans-serif; color: rgba(201,169,97,0.7);
-  margin-bottom: 28px; font-size: var(--font-size-sm);
-}
-#playlist-password {
-  width: 100%; padding: 14px 16px; margin-bottom: 18px;
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,97,0.3);
-  border-radius: 8px; color: var(--gold-pale);
-  font-family: 'Lato', sans-serif; font-size: var(--font-size-sm);
-  outline: none; transition: border-color 0.3s;
-}
-#playlist-password::placeholder { color: rgba(201,169,97,0.35); }
-#playlist-password:focus { border-color: rgba(201,169,97,0.6); background: rgba(255,255,255,0.08); }
-.playlist-lock-card .btn-primary {
-  width: 100%; margin-bottom: 20px;
-}
-.lock-note { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(201,169,97,0.45); font-style: italic; }
 
 /* ── GALLERY ───────────────────────────────────────────────────────────── */
 #gallery { background: var(--shiva-blue); padding-bottom: 80px; }
