@@ -26,7 +26,7 @@ const $$ = (selector) => document.querySelectorAll(selector);
 // Debounce helper to limit how often a function runs
 function debounce(func, wait) {
   let timeout;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
@@ -66,10 +66,10 @@ function initGuestBanner() {
 /* ── COUNTDOWN TIMER ───────────────────────────────────────────────────── */
 function initCountdown() {
   const els = {
-    days:  $('#cd-days'),
+    days: $('#cd-days'),
     hours: $('#cd-hours'),
-    mins:  $('#cd-mins'),
-    secs:  $('#cd-secs'),
+    mins: $('#cd-mins'),
+    secs: $('#cd-secs'),
   };
 
   function tick() {
@@ -79,10 +79,10 @@ function initCountdown() {
       return;
     }
     const pad = (n) => String(n).padStart(2, '0');
-    if (els.days)  els.days.textContent  = pad(Math.floor(diff / 86400000));
+    if (els.days) els.days.textContent = pad(Math.floor(diff / 86400000));
     if (els.hours) els.hours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    if (els.mins)  els.mins.textContent  = pad(Math.floor((diff % 3600000) / 60000));
-    if (els.secs)  els.secs.textContent  = pad(Math.floor((diff % 60000) / 1000));
+    if (els.mins) els.mins.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    if (els.secs) els.secs.textContent = pad(Math.floor((diff % 60000) / 1000));
   }
 
   tick();
@@ -154,7 +154,7 @@ function initNavScroll() {
 
 /* ── MOBILE MENU TOGGLE ────────────────────────────────────────────────── */
 function toggleMobileMenu() {
-  const btn  = $('#hamburger-btn');
+  const btn = $('#hamburger-btn');
   const menu = $('#nav-menu');
   if (!btn || !menu) return;
 
@@ -164,7 +164,7 @@ function toggleMobileMenu() {
 }
 
 function closeMobileMenu() {
-  const btn  = $('#hamburger-btn');
+  const btn = $('#hamburger-btn');
   const menu = $('#nav-menu');
   if (!btn || !menu) return;
 
@@ -280,7 +280,7 @@ function initHeroCanvas() {
   let W, H, particles;
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
+    W = canvas.width = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
   }
 
@@ -374,7 +374,7 @@ function handleRSVPSubmit(e) {
   ].join('\n');
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
-  
+
   form.style.display = 'none';
   const successDiv = $('#rsvp-success');
   if (successDiv) successDiv.style.display = 'block';
@@ -404,11 +404,11 @@ function showFieldError(input, message) {
 // Validates the inputs for the Sangeet registration form and redirects the
 // user to WhatsApp with a pre-filled message detailing their performance.
 function submitSangeetEntry() {
-  const name      = $('#perf-name')?.value.trim() || '';
-  const phone     = $('#perf-phone')?.value.trim() || '';
+  const name = $('#perf-name')?.value.trim() || '';
+  const phone = $('#perf-phone')?.value.trim() || '';
   const groupsize = $('#perf-groupsize')?.value || '';
-  const song      = $('#perf-song')?.value.trim() || '';
-  const note      = $('#perf-note')?.value.trim() || '';
+  const song = $('#perf-song')?.value.trim() || '';
+  const note = $('#perf-note')?.value.trim() || '';
 
   const danceSelected = $('#perf-dance')?.checked;
 
@@ -482,7 +482,7 @@ function initSangeetForm() {
       sendSongDetailsToWhatsApp();
     });
   }
-  
+
   const form = $('#sangeet-form');
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -520,7 +520,7 @@ function sendSongDetailsToWhatsApp() {
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
   showNotification('✓ Opening WhatsApp to share your song details!', 3000);
-  
+
   // Clear form after submission
   if ($('#sangeet-form')) {
     $('#sangeet-form').reset();
@@ -626,7 +626,7 @@ function initMobileMenu() {
 function initContentNotify() {
   const notifyBtn = $('#content-notify-btn');
   const notifyInput = $('#notify-phone');
-  
+
   if (notifyBtn) {
     notifyBtn.addEventListener('click', subscribeContentNotify);
   }
