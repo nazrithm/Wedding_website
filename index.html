@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hitanshi &amp; Shashank — Wedding 2026</title>
+  <meta name="description"
+    content="Join Hitanshi &amp; Shashank for their wedding celebration in Jaipur, Rajasthan 2026.">
+  <meta name="theme-color" content="#b8953f">
+  <link rel="canonical" href="https://example.com/" />
+  <meta name="author" content="Hitanshi &amp; Shashank" />
+  <meta name="keywords" content="wedding, invitation, Jaipur, 2026, Hitanshi, Shashank" />
+  <meta property="og:image" content="./photos/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hitanshi & Shashank — Wedding Celebration" />
+  <meta property="og:description"
+    content="Join us for our wedding celebration. Save the date: November 25, 2026 in Jaipur!" />
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>" />
+  <!--
+    JSON-LD Event Structured Data:
+    This helps Google and other search engines index this site as a formal event.
+    You can customize the event name, startDate, location, and description here.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Hitanshi & Shashank Wedding",
+    "startDate": "2026-11-24T12:30:00+05:30",
+    "location": {
+      "@type": "Place",
+      "name": "Heaven's Garden, Jaipur",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Heaven's Garden",
+        "addressLocality": "Jaipur",
+        "addressRegion": "Rajasthan",
+        "postalCode": "302020",
+        "addressCountry": "IN"
+      }
+    },
+    "image": ["./photos/og-image.jpg"],
+    "description": "Join Hitanshi & Shashank for their wedding celebration in Jaipur, Rajasthan 2026.",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://example.com/",
+      "price": "0",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    },
+    "performer": [
+      {
+        "@type": "Person",
+        "name": "Hitanshi"
+      },
+      {
+        "@type": "Person",
+        "name": "Shashank"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Main application script -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!--
+    ========================================================================
+    WEDDING INVITATION DEVELOPER GUIDE & INSTRUCTIONS
+    ========================================================================
+    Welcome! This website is built with vanilla HTML, CSS, and JavaScript.
+    Here is a quick guide on how to edit and customize this invite:
+
+    1. GLOBAL CONFIGURATION (Dates, WhatsApp Numbers, Passcodes):
+       Open 'script.js' and modify the constants at the top:
+       - WEDDING_DATE: The countdown target date and time.
+       - WHATSAPP_PHONE: The phone number that receives RSVP and Sangeet registrations.
+       - PLAYLIST_ACCESS_CODE: The passcode to unlock the Sangeet playlist admin details.
+
+    2. CUSTOMIZING THE BRIDE & GROOM:
+       - Search for 'Hitanshi' and 'Shashank' in this file to edit names, bios, or roles.
+       - The bride/groom portrait images are in the './photos/' folder and referenced
+         around lines 150-178.
+
+    3. GUEST WELCOME BANNER FEATURE:
+       - Pass "?guest=YourName" in the URL query string (e.g. website.com/?guest=Uncle+Raj)
+         to dynamically display a personalized welcome banner at the top of the page.
+
+    4. CHANGING THE BACKGROUND THEME GRAPHICS:
+       - Open 'style.css' and navigate to the bottom section: 'SHIVA-PARVATI BACKGROUND WATERMARK THEME'.
+       - You can change the background images for each section or adjust the opacity
+         values (e.g. increase opacity to make the watermarks more visible).
+
+    5. EDITING EVENTS & RSVP DETAILS:
+       - Timings, dates, and locations can be modified under each '<article class="event-card">'
+         starting around line 271.
+    ========================================================================
+  -->
+
+  <!-- Guest Banner: Shows personalized invitation greeting if 'guest' query param is set -->
+  <div id="guest-banner" role="status" aria-live="polite"></div>
+
+  <div id="rsvp-success-notification" class="rsvp-notification" style="display:none"></div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-brand">H & S</div>
+
+    <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div id="nav-menu" class="nav-menu" role="menubar">
+      <a href="#hero" role="menuitem">Home</a>
+      <a href="#countdown" role="menuitem">Countdown</a>
+      <a href="#events" role="menuitem">Events</a>
+      <a href="#sangeet-participate" role="menuitem">Participate</a>
+      <a href="#playlist-upload" role="menuitem">Playlist</a>
+      <a href="#gallery" role="menuitem">Gallery</a>
+      <a href="#rsvp" role="menuitem">RSVP</a>
+      <a href="#family" role="menuitem">Family</a>
+      <a href="#wedding-content" role="menuitem">Content</a>
+      <a href="#location" role="menuitem">Venue</a>
+      <a href="#contact" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" aria-label="Wedding introduction">
+    <div class="hero-bg"></div>
+    <!--
+    SHIVA-PARVATI BACKGROUND IMAGE — add your image to ./photos/ folder
+    and uncomment / edit the style in style.css .hero-divine-bg
+    The placeholder div below is ready for your image:
+  -->
+    <div class="hero-divine-bg" aria-hidden="true"></div>
+    <div class="hero-noise"></div>
+    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="corner-ornament tl" aria-hidden="true">
+      <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+        <path d="M5,5 L60,5" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <path d="M5,5 L5,60" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <circle cx="5" cy="5" r="3" fill="rgba(184,149,63,0.8)" />
+        <path d="M20,5 Q50,30 35,70 Q20,110 5,85" stroke="rgba(184,149,63,0.35)" stroke-width="1" fill="none" />
+        <circle cx="35" cy="35" r="2" fill="rgba(184,149,63,0.5)" />
+        <circle cx="20" cy="55" r="1.5" fill="rgba(184,149,63,0.4)" />
+      </svg>
+    </div>
+    <div class="corner-ornament tr" aria-hidden="true">
+      <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+        <path d="M135,5 L80,5" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <path d="M135,5 L135,60" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <circle cx="135" cy="5" r="3" fill="rgba(184,149,63,0.8)" />
+        <path d="M120,5 Q90,30 105,70 Q120,110 135,85" stroke="rgba(184,149,63,0.35)" stroke-width="1" fill="none" />
+      </svg>
+    </div>
+    <div class="corner-ornament bl" aria-hidden="true">
+      <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+        <path d="M5,135 L60,135" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <path d="M5,135 L5,80" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <circle cx="5" cy="135" r="3" fill="rgba(184,149,63,0.8)" />
+      </svg>
+    </div>
+    <div class="corner-ornament br" aria-hidden="true">
+      <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+        <path d="M135,135 L80,135" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <path d="M135,135 L135,80" stroke="rgba(184,149,63,0.6)" stroke-width="1.5" />
+        <circle cx="135" cy="135" r="3" fill="rgba(184,149,63,0.8)" />
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow animate-in" style="--delay:0.1s">
+        <span class="eyebrow-line"></span>
+        <span>Wedding Invitation</span>
+        <span class="eyebrow-line"></span>
+      </div>
+
+      <div class="hero-welcome animate-in" style="--delay:0.25s">
+        Meeta Mathur <span class="welcome-text">welcomes you to the wedding of her daughter</span>
+      </div>
+
+      <div class="hero-couple animate-in" style="--delay:0.45s">
+        <div class="hero-portrait bride-portrait">
+          <div class="portrait-ring">
+            <img src="./photos/img1.jpg" alt="Hitanshi — The Bride" loading="eager" />
+          </div>
+          <div class="portrait-label">
+            <span class="portrait-name">Hitanshi</span>
+            <span class="portrait-role">The Bride</span>
+          </div>
+        </div>
+
+        <div class="hero-ampersand">
+          <span>&</span>
+          <div class="amp-ornament">✦</div>
+        </div>
+
+        <div class="hero-portrait groom-portrait">
+          <div class="portrait-ring">
+            <img src="./photos/img2.jpg" alt="Shashank — The Groom" loading="eager" />
+          </div>
+          <div class="portrait-label">
+            <span class="portrait-name">Shashank</span>
+            <span class="portrait-role">The Groom</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-title-wrap animate-in" style="--delay:0.6s">
+        <h1 class="hero-title"><em>Together Forever</em></h1>
+      </div>
+
+      <div class="hero-divider animate-in" style="--delay:0.7s" aria-hidden="true">
+        <span></span><span class="divider-gem">◆</span><span></span>
+      </div>
+
+      <div class="hero-meta animate-in" style="--delay:0.8s">
+        <div class="hero-location">📍 Jaipur, Rajasthan, India</div>
+        <div class="hero-date">Wednesday · 25th November 2026 · 07:00 PM Onwards</div>
+        <p class="hero-tagline">To celebrate the marriage of Hitanshi &amp; Shashank and seek your blessings</p>
+      </div>
+
+      <div class="hero-cta animate-in" style="--delay:0.95s">
+        <a href="#rsvp" class="btn-primary">RSVP Now</a>
+        <a href="#events" class="btn-ghost">View Events</a>
+      </div>
+
+      <div class="hero-scroll animate-in" style="--delay:1.25s" aria-hidden="true">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COUNTDOWN ═══ -->
+  <section id="countdown" aria-label="Wedding countdown">
+    <div class="countdown-bg" aria-hidden="true"></div>
+    <div class="section-inner">
+      <div class="section-eyebrow">Time Until We Say</div>
+      <h2 class="section-title">I Do</h2>
+      <div class="countdown-grid" role="timer" aria-label="Wedding countdown timer">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-days" aria-label="days">00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-sep" aria-hidden="true">·</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-hours" aria-label="hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-sep" aria-hidden="true">·</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-mins" aria-label="minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-sep" aria-hidden="true">·</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-secs" aria-label="seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COUPLE ═══ -->
+  <section id="couple" aria-label="About the couple">
+    <div class="section-inner">
+      <div class="section-eyebrow">The Ones Who Said</div>
+      <h2 class="section-title">Meet the Two of Them 💕</h2>
+      <p class="section-sub">Two souls, one beautiful story</p>
+      <div class="couple-grid reveal">
+        <div class="couple-card">
+          <div class="couple-avatar">🪷</div>
+          <h3 class="couple-name">Hitanshi Mathur</h3>
+          <div class="couple-role">The Bride</div>
+          <div class="couple-divider" aria-hidden="true"></div>
+          <p class="couple-bio">Hitanshi — thoughtful, talented, and beautifully deep. An introvert who feels everything
+            deeply, thinks before she speaks, and carries a quiet intelligence that speaks louder than words. Sensitive,
+            emotional, and endlessly respectful towards the people she loves — she may have seemed like his opposite,
+            but perhaps that was always the point.</p>
+        </div>
+        <div class="couple-separator" aria-hidden="true"><span>&</span></div>
+        <div class="couple-card">
+          <div class="couple-avatar">🔱</div>
+          <h3 class="couple-name">Shashank Tiwari</h3>
+          <div class="couple-role">The Groom</div>
+          <div class="couple-divider" aria-hidden="true"></div>
+          <p class="couple-bio">Shashank — an HR professional by career, and an adventure by nature. Joyful, grounded,
+            and deeply sensitive, he is someone who finds as much excitement in a mountain trail as he does in the
+            little moments of everyday life. A fitness freak with a zest for living fully — he walked through life with
+            energy and enthusiasm, until he met her, and quietly made her fall in love with his world too.</p>
+        </div>
+      </div>
+      <div class="couple-outro reveal" style="text-align: center; margin-top: 64px;">
+        <p class="outro-text" style="text-align: center;">He brought the adventure. She brought the depth.</p>
+        <p class="outro-text highlighted" style="text-align: center;">And together — they became each other’s greatest
+          story. 🤍</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EVENTS ═══ -->
+  <section id="events" aria-label="Wedding events">
+    <div class="section-inner">
+      <div class="section-eyebrow">Join Us For</div>
+      <h2 class="section-title">The Celebrations</h2>
+      <p class="section-sub">Four magical events to celebrate our union</p>
+
+      <div class="events-grid">
+        <article class="event-card reveal" aria-label="Haldi and mehendi event">
+          <div class="event-number">01</div>
+          <div class="event-icon" aria-hidden="true">🌿</div>
+          <h3 class="event-title">Haldi &amp; Mehendi</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📅</span><strong>24th November
+                2026</strong></div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">🕛</span>12:30 PM Onwards</div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📍</span>Swimming Pool area, Heaven's
+              Garden</div>
+          </div>
+          <a href="https://www.google.com/maps/place/Heaven's+Garden/@26.8828489,75.904322,796m/data=!3m2!1e3!4b1!4m6!3m5!1s0x396db77f1031884f:0xa2201a639ff6478e!8m2!3d26.8828489!4d75.9068969!16s%2Fg%2F11pkb78fk8?entry=ttu&amp;g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener noreferrer" class="btn-map">Get Directions ↗</a>
+        </article>
+
+        <article class="event-card event-card--featured reveal" aria-label="Engagement &amp; Sangeet event">
+          <div class="event-badge">Join &amp; Perform</div>
+          <div class="event-number">02</div>
+          <div class="event-icon" aria-hidden="true">🎶</div>
+          <h3 class="event-title">Engagement &amp; Sangeet</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📅</span><strong>24th November
+                2026</strong></div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">🕕</span>6:30 PM Onwards</div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📍</span>Meru lawn, Heaven's Garden
+            </div>
+          </div>
+          <a href="#sangeet-participate" class="btn-map btn-map--light">Register to Perform ✦</a>
+        </article>
+
+        <article class="event-card reveal" aria-label="Mayra event">
+          <div class="event-number">03</div>
+          <div class="event-icon" aria-hidden="true">🪔</div>
+          <h3 class="event-title">Mayra</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📅</span><strong>25th November
+                2026</strong></div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">🕚</span>11:00 AM Onwards</div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📍</span>Banquet hall, Heaven's
+              Garden</div>
+          </div>
+          <a href="https://www.google.com/maps/place/Heaven's+Garden/@26.8828489,75.904322,796m/data=!3m2!1e3!4b1!4m6!3m5!1s0x396db77f1031884f:0xa2201a639ff6478e!8m2!3d26.8828489!4d75.9068969!16s%2Fg%2F11pkb78fk8?entry=ttu&amp;g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener noreferrer" class="btn-map">Get Directions ↗</a>
+        </article>
+
+        <article class="event-card event-card--featured reveal" aria-label="Wedding reception event">
+          <div class="event-badge">Main Event</div>
+          <div class="event-number">04</div>
+          <div class="event-icon" aria-hidden="true">🛕</div>
+          <h3 class="event-title">Wedding Reception</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📅</span><strong>25th November
+                2026</strong></div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">🕖</span>7:00 PM Onwards</div>
+            <div class="event-detail"><span class="detail-icon" aria-hidden="true">📍</span>Meru lawn, Heaven's Garden
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/place/Heaven's+Garden/@26.8828489,75.904322,796m/data=!3m2!1e3!4b1!4m6!3m5!1s0x396db77f1031884f:0xa2201a639ff6478e!8m2!3d26.8828489!4d75.9068969!16s%2Fg%2F11pkb78fk8?entry=ttu&amp;g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener noreferrer" class="btn-map btn-map--light">Get Directions ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SANGEET PARTICIPATION ═══ -->
+  <section id="sangeet-participate" aria-label="Sangeet participation form">
+    <div class="section-inner">
+      <div class="section-eyebrow" style="color:rgba(201,169,97,0.75)">Engagement &amp; Sangeet · 24th November 2026
+      </div>
+      <h2 class="section-title" style="color:#F5F3F0">Join the Stage</h2>
+      <p class="section-sub" style="color:rgba(245,243,240,0.6)">Want to perform for Hitanshi & Shashank? Register your
+        dance act below!</p>
+
+      <div class="participate-form reveal">
+        <!-- Dance only — singing removed -->
+        <div style="margin-bottom: 24px;">
+          <label
+            style="font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;color:rgba(184,149,63,0.7);text-transform:uppercase;display:block;margin-bottom:14px;">I
+            Want To Perform</label>
+          <div class="participate-cards">
+            <div class="participate-type-card selected" id="card-dance" role="checkbox" aria-checked="true"
+              tabindex="0">
+              <input type="checkbox" id="perf-dance" name="perform_type" value="dance" checked style="display:none" />
+              <span class="participate-card-icon">💃</span>
+              <div class="participate-card-title">Dance Performance</div>
+              <div class="participate-card-desc">Solo, duo, or group choreography. Bollywood, classical, or freestyle —
+                all welcome!</div>
+              <div class="participate-check">✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="perf-name" class="form-label">Your Name</label>
+            <input id="perf-name" type="text" class="form-input" placeholder="Full name" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="perf-phone" class="form-label">WhatsApp Number</label>
+            <input id="perf-phone" type="tel" class="form-input" placeholder="+91 XXXXX XXXXX" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="perf-groupsize" class="form-label">Group Size</label>
+            <select id="perf-groupsize" class="form-select">
+              <option value="">Select...</option>
+              <option value="solo">Solo (Just me)</option>
+              <option value="duo">Duo (2 people)</option>
+              <option value="group-small">Small Group (3–5)</option>
+              <option value="group-large">Large Group (6+)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="perf-song" class="form-label">Song / Act Title</label>
+            <input id="perf-song" type="text" class="form-input" placeholder="e.g. Tum Hi Ho — medley" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="perf-note" class="form-label">Anything Else? (Optional)</label>
+          <textarea id="perf-note" class="form-textarea"
+            placeholder="Special equipment needed, a surprise element, or just a message to the couple..."></textarea>
+        </div>
+
+        <button type="button" id="perf-submit-btn" class="btn-submit" style="width:100%">
+          <span>Register My Performance</span>
+          <span class="btn-icon" aria-hidden="true">💃</span>
+        </button>
+        <p class="participate-note">Your entry will be sent via WhatsApp to the wedding coordinator. The team will
+          confirm your slot closer to the date.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SANGEET SONGS REGISTRATION ═══ -->
+  <section id="playlist-upload" aria-label="Song registration for Sangeet performers">
+    <div class="section-inner">
+      <div class="section-eyebrow light">Engagement &amp; Sangeet · Performance Music</div>
+      <h2 class="section-title light">Share Your Song Details</h2>
+      <p class="section-sub light">Send your song and dance details directly on WhatsApp</p>
+
+      <div class="reveal" style="max-width: 660px; margin: 0 auto;">
+        <form id="sangeet-form" class="sangeet-form">
+          <input type="text" id="sangeet-name" placeholder="Your name (performer)" autocomplete="name" required />
+          <input type="text" id="sangeet-group" placeholder="Group/Family name (optional)" />
+          <input type="text" id="sangeet-song" placeholder="Song name/title" required />
+          <input type="text" id="sangeet-dance" placeholder="Dance details e.g. 'Bollywood, solo, 3-4 min'" />
+          <button type="button" id="sangeet-submit-btn" class="btn-submit sangeet-btn">
+            <span>Send on WhatsApp 💬</span>
+          </button>
+        </form>
+
+        <p class="participate-note" style="margin-top: 24px; text-align: center; font-size: var(--font-size-sm); color: rgba(201,169,97,0.7);">
+          ℹ️ After clicking "Send on WhatsApp", please attach your song file (MP3) to the message
+        </p>
+
+        <p class="participate-note" style="margin-top: 16px; text-align: center; font-size: var(--font-size-sm);">
+          Your details will be sent directly to the coordination team on WhatsApp
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ═══ -->
+  <section id="gallery" aria-label="Photo gallery">
+    <div class="section-inner">
+      <div class="section-eyebrow light">Pre-Wedding</div>
+      <h2 class="section-title light">Our Gallery</h2>
+      <p class="section-sub light">Moments frozen in time, forever</p>
+
+      <div class="gallery-layout">
+        <div class="gallery-featured reveal" role="button" tabindex="0" aria-label="View featured photo">
+          <img src="./photos/img3.jpg" loading="lazy" alt="Hitanshi and Shashank — featured pre-wedding photo" />
+          <div class="gallery-featured-overlay"><span class="gallery-featured-label">Featured</span></div>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal" style="--i:1" role="button" tabindex="0" aria-label="View engagement photo">
+            <img src="./photos/img4.jpg" loading="lazy" alt="Engagement" />
+            <div class="gallery-item-overlay"><span>Engagement</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--i:2" role="button" tabindex="0" aria-label="View celebration photo">
+            <img src="./photos/img5.jpg" loading="lazy" alt="Celebration" />
+            <div class="gallery-item-overlay"><span>Celebration</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--i:3" role="button" tabindex="0" aria-label="View portrait photo">
+            <img src="./photos/img6.jpg" loading="lazy" alt="Portrait" />
+            <div class="gallery-item-overlay"><span>Portraits</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--i:4" role="button" tabindex="0" aria-label="View moments photo">
+            <img src="./photos/img7.jpg" loading="lazy" alt="Moments" />
+            <div class="gallery-item-overlay"><span>Moments</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--i:5" role="button" tabindex="0" aria-label="View candid photo">
+            <img src="./photos/img1.jpg" loading="lazy" alt="Candid" />
+            <div class="gallery-item-overlay"><span>Candid</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lightbox-close" aria-label="Close photo viewer">✕</button>
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous photo">‹</button>
+      <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="Full size photo" />
+      </div>
+      <button class="lightbox-nav lightbox-next" aria-label="Next photo">›</button>
+      <div class="lightbox-counter" aria-live="polite">
+        <span id="lightbox-counter">1 / 7</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RSVP — Confirmation only, no decline option ═══ -->
+  <section id="rsvp" aria-label="RSVP form">
+    <div class="section-inner">
+      <div class="section-eyebrow">We Hope To See You</div>
+      <h2 class="section-title">Kindly Respond</h2>
+      <p class="section-sub">Please confirm your attendance by 10th November 2026</p>
+
+      <div class="rsvp-container reveal">
+        <form class="rsvp-form" id="rsvp-form" novalidate aria-label="Wedding RSVP form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullname" class="form-label">Full Name</label>
+              <input id="fullname" type="text" name="fullname" class="form-input" placeholder="Enter your full name"
+                required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="guestcount" class="form-label">Number of Guests</label>
+              <input id="guestcount" type="number" name="guestcount" class="form-input" placeholder="Including yourself"
+                min="1" max="10" required />
+            </div>
+          </div>
+
+          <!-- Attendance confirmation only — decline removed -->
+          <input type="hidden" name="attend" value="yes" />
+
+          <button type="submit" class="btn-submit" aria-label="Confirm attendance via WhatsApp">
+            <span>Joyfully Confirm Attendance 🎉</span>
+            <span class="btn-icon" aria-hidden="true">💬</span>
+          </button>
+        </form>
+
+        <div class="rsvp-success" id="rsvp-success" style="display:none" aria-live="polite">
+          <div class="success-icon">✓</div>
+          <p>Opening WhatsApp...</p>
+          <small>Thank you for your RSVP!</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAMILY ═══ -->
+  <section id="family" aria-label="Our families">
+    <div class="section-inner">
+      <div class="section-eyebrow">With the Blessings Of</div>
+      <h2 class="section-title">Our Families</h2>
+      <p class="section-sub">The roots that make us who we are</p>
+
+      <div class="family-grid reveal">
+        <div class="family-card">
+          <h3 class="family-card-title">Bride's Family</h3>
+          <div class="family-divider" aria-hidden="true"></div>
+          <ul class="family-list">
+            <li class="family-member"><strong>Sunil Mathur</strong><span>Father of the Bride</span></li>
+            <li class="family-member"><strong>Meeta Mathur</strong><span>Mother of the Bride</span></li>
+            <li class="family-member"><strong>Ashi Mathur</strong><span>Sister of the Bride</span></li>
+          </ul>
+        </div>
+        <div class="family-card">
+          <h3 class="family-card-title">Groom's Family</h3>
+          <div class="family-divider" aria-hidden="true"></div>
+          <ul class="family-list">
+            <li class="family-member"><strong>Ashok Tiwari</strong><span>Father of the Groom</span></li>
+            <li class="family-member"><strong>Poonam Tiwari</strong><span>Mother of the Groom</span></li>
+            <li class="family-member"><strong>Hitanshi Mathur</strong><span>Sister of the Groom</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WEDDING CONTENT — COMING SOON ═══ -->
+  <section id="wedding-content" aria-label="Wedding content coming soon">
+    <div class="section-inner">
+      <div class="section-eyebrow light">After the Celebrations</div>
+      <h2 class="section-title light">Wedding Content</h2>
+      <p class="section-sub light">Photos, videos & reels from every magical moment — dropping right here after the
+        events</p>
+
+      <div class="content-grid">
+        <div class="content-card reveal">
+          <span class="content-card-icon">🎬</span>
+          <div class="content-card-title">Wedding Film</div>
+          <div class="content-card-desc">The full cinematic highlight reel from the ceremony and reception — relive
+            every emotion.</div>
+        </div>
+        <div class="content-card reveal">
+          <span class="content-card-icon">📸</span>
+          <div class="content-card-title">Photo Album</div>
+          <div class="content-card-desc">Hundreds of candid and professional photographs from Mehendi, Sangeet, and the
+            big day.</div>
+        </div>
+        <div class="content-card reveal">
+          <span class="content-card-icon">🎵</span>
+          <div class="content-card-title">Sangeet Reels</div>
+          <div class="content-card-desc">All the dance performances and unforgettable stage moments — short-form and
+            shareable.</div>
+        </div>
+      </div>
+
+      <div class="content-notify-wrap reveal">
+        <p>Get notified on WhatsApp when content goes live ✨</p>
+        <div class="content-notify-form">
+          <input type="tel" class="content-notify-input" id="notify-phone" placeholder="Your WhatsApp number" />
+          <button class="content-notify-btn" id="content-notify-btn">Notify Me</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCATION ═══ -->
+  <section id="location" aria-label="Venue location">
+    <div class="section-inner">
+      <div class="section-eyebrow">The Venue</div>
+      <h2 class="section-title">Find Us Here</h2>
+      <p class="section-sub">Heaven's Garden, Jaipur, Rajasthan 302020</p>
+
+
+
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.1158498801594!2d75.90432197548545!3d26.88284887666497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db77f1031884f%3A0xa2201a639ff6478e!2sHeaven's+Garden!5e0!3m2!1sen!2sin!4v1716631849000!5m2!1sen!2sin"
+          title="Wedding Venue Map — Heaven's Garden, Jaipur" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" aria-label="Contact information">
+    <div class="section-inner">
+      <div class="section-eyebrow">Reach Out To</div>
+      <h2 class="section-title">Wedding Contacts</h2>
+      <p class="section-sub">We're here to help with any questions</p>
+
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">👨‍💼</div>
+          <div class="contact-role">Wedding Coordinator</div>
+          <div class="contact-name">Bhavnish Mathur</div>
+          <a href="tel:+918094803454" class="contact-phone">+91 80948 03454</a>
+          <div class="contact-cta-row">
+            <a href="https://wa.me/918094803454" target="_blank" rel="noopener noreferrer"
+              class="contact-btn-whatsapp">💬 WhatsApp</a>
+            <a href="tel:+918094803454" class="contact-btn-call">📞 Call</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">👨‍👩‍👧</div>
+          <div class="contact-role">Bride's Family</div>
+          <div class="contact-name">Ashi Mathur</div>
+          <a href="tel:+917240743706" class="contact-phone">+91 72407 43706</a>
+          <div class="contact-cta-row">
+            <a href="https://wa.me/917240743706" target="_blank" rel="noopener noreferrer"
+              class="contact-btn-whatsapp">💬 WhatsApp</a>
+            <a href="tel:+917240743706" class="contact-btn-call">📞 Call</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">👨‍👩‍👦</div>
+          <div class="contact-role">Groom's Family</div>
+          <div class="contact-name">Hitanshi Mathur</div>
+          <a href="tel:+918696552937" class="contact-phone">+91 86965 52937</a>
+          <div class="contact-cta-row">
+            <a href="https://wa.me/918696552937" target="_blank" rel="noopener noreferrer"
+              class="contact-btn-whatsapp">💬 WhatsApp</a>
+            <a href="tel:+918696552937" class="contact-btn-call">📞 Call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-ornament" aria-hidden="true">✦ ✦ ✦</div>
+      <div class="footer-names">Hitanshi & Shashank</div>
+      <div class="footer-hashtag">#HitanshiShashankForever</div>
+      <p class="footer-message">Thank you for being a part of our love story. We can't wait to celebrate with you.</p>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="Facebook">💙</a>
+        <a href="#" aria-label="WhatsApp">💬</a>
+        <a href="#" aria-label="YouTube">🎬</a>
+      </div>
+      <div class="footer-divider" aria-hidden="true"></div>
+      <div class="footer-copy">© 2026 Hitanshi & Shashank · Made with ♥ in Jaipur</div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
